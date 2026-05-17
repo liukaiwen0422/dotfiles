@@ -1,0 +1,65 @@
+# Starship 提示符
+eval "$(starship init zsh)"
+
+# 加载插件
+#zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#zsh-syntax-highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#broot
+source /Users/kevin/.config/broot/launcher/bash/br
+#thefuck,zsh
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
+#z
+source ~/.zsh/z/zsh-z.plugin.zsh
+#fzf-tab
+source ~/.zsh/fzf-tab/fzf-tab.zsh
+# 启用 Zsh 补全
+zstyle ':completion:*' menu select
+autoload -Uz compinit && compinit
+#ANDROID_HOME
+export ANDROID_HOME=~/.local/android_sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+#export PATH=$PATH:$ANDROID_HOME/tools/
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+#JAVA_HOME
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+#lua51
+export PATH=$HOME/.local/bin/:$PATH
+# 自动加载历史搜索功能
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+# 实用别名
+alias ls='eza --color=auto'
+alias ll='eza -l'
+alias la='eza -A'
+alias vi='nvim'
+alias vim='nvim'
+alias cat='bat'
+alias grep='rg'
+#alias grep='grep --color=auto'
+# 目录导航别名
+#alias ..='cd ..'
+#alias ...='cd ../..'
+alias cls='clear'
+alias h='history'
+
+# 历史记录配置
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=100000000
+HISTSIZE=100000000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+
+bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+
