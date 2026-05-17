@@ -37,6 +37,7 @@ zle -N history-beginning-search-forward-end history-search-end
 alias ls='eza --color=auto'
 alias ll='eza -l'
 alias la='eza -A'
+alias tree='eza --tree'
 alias vi='nvim'
 alias vim='nvim'
 alias cat='bat'
